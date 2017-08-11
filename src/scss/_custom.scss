@@ -1,0 +1,10 @@
+// Here you can add other styles
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+// import url('/assets/bootstrap.min.css');
+
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+.navbar.navbar-inverse.navbar-fixed-top{
+	background-color: #2b92ec;
+}

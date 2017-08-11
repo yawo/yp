@@ -1,0 +1,12 @@
+{{title}}
+<div class="animated fadeIn">
+	 <div class="jumbotron">
+	   <div class="container">		
+			<ul>
+			  <li class="text" *ngFor="let entry of entries | async">
+			    {{entry.$value}}
+			  </li>
+			</ul>
+		</div>
+	</div>
+</div>
