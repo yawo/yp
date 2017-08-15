@@ -1,29 +1,37 @@
 export class Entry {
-  key: string;
-  name: string;
-  description: string;
-  contacts: Contact[];
-  address: Address;
-  categories: Category[];
-  beneficiaires: string[];
-  tags: string[];
-  pictureUrls: string[];
+  constructor(
+   public key: string,
+   public name: string,
+   public description: string,
+   public categories: Category[],
+   public target: string[],
+   public activiyZone: string[],
+   public tags: string[]
+  ) { }
+
+  public contacts: Contact[];
+  public address: Address;
+  public pictureUrls: string[];
 }
 
 export class Contact {
-  name: string;
-  email: string; // TBV
-  phone: string; // to be validated
-  role: ContactRole;
+  constructor(
+    public name: string,
+    public email: string, // TBV
+    public phone: string, // to be validated
+    public role: ContactRole
+    ) { }
 }
 
 export class Address {
-  full: string;
-  line1: string;
-  postalCode: string;
-  town: string;
-  lat: number;
-  lon: number;
+  constructor(
+    public full: string,
+    ) { }
+    public line1: string;
+    public postalCode: string;
+    public town: string;
+    public lat: number;
+    public lon: number;
 }
 
 export enum Category {
@@ -31,5 +39,5 @@ export enum Category {
 }
 
 export enum ContactRole {
-  PRESIDENT, MAINCONTACT, SECRETARY
+  PRESIDENT, MAINCONTACT, SECRETARY, OTHER
 }

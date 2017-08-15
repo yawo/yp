@@ -10,3 +10,55 @@
 		</div>
 	</div>
 </div>
+<div class="container">
+	<form class="form form-horizontal">
+      <div class="form-group">
+         <label for="name">Name</label>
+		 <input type="text" class="form-control" id="name" [(ngModel)]="model.name" name="name" required>
+		 
+		  <label for="description">description</label>
+		 <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description" required>
+		 
+		  <label for="activiyZone">activiyZone</label>
+		 <input type="text" class="form-control" id="activiyZone" [(ngModel)]="model.activiyZone" name="activiyZone" required>
+		
+		   <label for="tags">tags</label>
+		 <input type="text" class="form-control" id="tags" [(ngModel)]="model.tags" name="tags" required>
+		
+		 <label for="categories">categories</label>
+		 <select class="form-control"  id="categories"  required   [(ngModel)]="model.categories" name="categories">
+    		<option *ngFor="let c of categorieKeys" [value]="c">{{c}}</option>
+  		 </select>
+		
+		 <label for="description">description</label>
+		 <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description" required>
+		
+		  <label for="contactname">Name</label>
+		 <input type="text" class="form-control" id="contactname" [(ngModel)]="model.contacts[0].name" name="contactname" required>
+		 
+		 
+		   <label for="contactemail">email</label>
+		 <input type="email" class="form-control" id="contactemail" [(ngModel)]="model.contacts[0].email" name="contactemail" required>
+		 
+		 <label for="contactphone">phone</label>
+		 <input type="phone" class="form-control" id="contactphone" [(ngModel)]="model.contacts[0].phone" name="contactphone" required>
+		 
+		 <label for="contactrole">role</label>
+		 <input type="text" class="form-control" id="contactrole" [(ngModel)]="model.contacts[0].email" name="contactrole" required>
+		 
+		 
+		   <label for="address">address</label>
+		 <input type="text" class="form-control" id="address" [(ngModel)]="model.address.full" name="address" required>
+		
+		 
+      </div>
+ 
+      <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo">
+      </div>
+ 
+      <button type="submit" class="btn btn-success">Submit</button>
+ 
+    </form>
+</div>
