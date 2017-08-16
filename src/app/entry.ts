@@ -1,6 +1,5 @@
 export class Entry {
-  constructor(
-   public key: string,
+  constructor(   
    public name: string,
    public description: string,
    public categories: Category[],

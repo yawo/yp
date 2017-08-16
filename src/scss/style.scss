@@ -2,7 +2,7 @@
  * CoreUI - Open Source Bootstrap Admin Template
  * @version v1.0.0-alpha.6
  * @link http://coreui.io
- * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * Copyright (c) 2017 creativeLabs Å�ukasz Holeczek
  * @license MIT
  */
 // Override Boostrap variables
@@ -30,4 +30,10 @@
 @import "core/core";
 
 // Custom styles
-@import "custom";
+@import "custom"; 
+
+.assoFormContainer{
+	background-color: white;
+    border-radius: 5px;
+    padding: 9px;
+}

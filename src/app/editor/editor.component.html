@@ -1,64 +1,98 @@
 {{title}}
-<div class="animated fadeIn">
-	 <div class="jumbotron">
-	   <div class="container">		
-			<ul>
-			  <li class="text" *ngFor="let entry of entries | async">
-			    {{entry.$value}}
-			  </li>
-			</ul>
+
+<div class=" row">
+	<div class="assoFormContainer col-sm-6">
+		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit()">
+		<legend class="alert alert-info">Informations sur l'association</legend>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="name">Nom:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="name" placeholder="saisissez le nom légal de l'association"
+						[(ngModel)]="model.name" name="name" required>
+				</div>
+			</div>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="description">Description:</label>
+				<div class="col-sm-10">
+					<textarea type="text" class="form-control" id="description" placeholder="descrivez son activité"
+						[(ngModel)]="model.description" name="description" required></textarea>
+				</div>
+			</div>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="activiyZone">Zone d'action:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="activiyZone" placeholder="précisez où agit l'association. ex: Sénégal, Paris, Maroc..."
+						[(ngModel)]="model.activiyZone" name="activiyZone" required>
+				</div>
+			</div>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="tags">Mots-clés:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="tags" placeholder="ajoutez des mots-clés. Veuillez séparer avec des virgules"
+						[(ngModel)]="model.tags" name="tags" required>
+				</div>
+			</div>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="categories">Domaines d'action:</label>
+				<div class="col-sm-10">
+					<select multiple class="form-control" id="categories" required placeholder="sélectionner les domaines"
+						[(ngModel)]="model.categories" name="categories">
+						<option *ngFor="let c of categorieKeys" [value]="c">{{c}}</option>
+					</select>
+				</div>
+			</div>
+	
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="address">Adresse:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="address" placeholder="saisissez l'adresse complète"
+						[(ngModel)]="model.address.full" name="address" required>
+				</div>
+			</div> 
+	  <legend class="alert alert-info">Contact principal:</legend>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="contactname">Nom:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="contactname" placeholder="Nom du principal contact"
+						[(ngModel)]="model.contacts[0].name" name="contactname" required>
+				</div>
+			</div>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="contactemail">Email:</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="contactemail" placeholder="Email du principal contact"
+						[(ngModel)]="model.contacts[0].email" email name="contactemail" required>
+				</div>
+			</div>
+			<div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="contactphone">Téléphone:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="contactphone" placeholder="Téléphone du principal contact"
+						[(ngModel)]="model.contacts[0].phone"  pattern="^\d{10}$" name="contactphone" required>
+				</div>
+			</div>
+			<!-- <div class="form-group has-success has-warning has-danger row">
+				<label class="col-sm-2 col-form-label" for="contactrole">role</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="contactrole" placeholder=""
+						[(ngModel)]="model.contacts[0].email" name="contactrole" required>
+				</div>
+			</div>
+			 -->
+			
+			<button type="submit" class="btn btn-success">Ajouter</button>
+	
+		</form>
+	</div>
+	<div class="col-sm-6 animated fadeIn">
+	 <!-- https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/ -->
+		<div class="jumbotron">
+			<div class="container">
+				<ul>
+					<li class="text" *ngFor="let entry of entries | async">
+						{{entry.name}}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="container">
-	<form class="form form-horizontal">
-      <div class="form-group">
-         <label for="name">Name</label>
-		 <input type="text" class="form-control" id="name" [(ngModel)]="model.name" name="name" required>
-		 
-		  <label for="description">description</label>
-		 <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description" required>
-		 
-		  <label for="activiyZone">activiyZone</label>
-		 <input type="text" class="form-control" id="activiyZone" [(ngModel)]="model.activiyZone" name="activiyZone" required>
-		
-		   <label for="tags">tags</label>
-		 <input type="text" class="form-control" id="tags" [(ngModel)]="model.tags" name="tags" required>
-		
-		 <label for="categories">categories</label>
-		 <select class="form-control"  id="categories"  required   [(ngModel)]="model.categories" name="categories">
-    		<option *ngFor="let c of categorieKeys" [value]="c">{{c}}</option>
-  		 </select>
-		
-		 <label for="description">description</label>
-		 <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description" required>
-		
-		  <label for="contactname">Name</label>
-		 <input type="text" class="form-control" id="contactname" [(ngModel)]="model.contacts[0].name" name="contactname" required>
-		 
-		 
-		   <label for="contactemail">email</label>
-		 <input type="email" class="form-control" id="contactemail" [(ngModel)]="model.contacts[0].email" name="contactemail" required>
-		 
-		 <label for="contactphone">phone</label>
-		 <input type="phone" class="form-control" id="contactphone" [(ngModel)]="model.contacts[0].phone" name="contactphone" required>
-		 
-		 <label for="contactrole">role</label>
-		 <input type="text" class="form-control" id="contactrole" [(ngModel)]="model.contacts[0].email" name="contactrole" required>
-		 
-		 
-		   <label for="address">address</label>
-		 <input type="text" class="form-control" id="address" [(ngModel)]="model.address.full" name="address" required>
-		
-		 
-      </div>
- 
-      <div class="form-group">
-        <label for="alterEgo">Alter Ego</label>
-        <input type="text" class="form-control" id="alterEgo">
-      </div>
- 
-      <button type="submit" class="btn btn-success">Submit</button>
- 
-    </form>
 </div>
