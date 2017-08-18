@@ -1,5 +1,5 @@
 <div class=" row">
-	<div class="assoFormContainer col-sm-6">
+	<span class="assoFormContainer col-sm-6">
 		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit()">
 		<legend class="alert alert-info">Informations sur l'association</legend>
 			<div class="form-group has-success has-warning has-danger row">
@@ -78,14 +78,22 @@
 			</div>
 			 -->
 
-			<button type="submit" class="btn btn-success">Ajouter</button>
+      <button type="submit" class="btn btn-success">Ajouter</button>
+
+      <span [ngClass]="'alert alert-success alert-dismissible fade show float-sm-right':submitSuccess,'hidden':!submitSuccess" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <small><strong>Bien rajouté!</strong> Merci</small>
+      </span>
+
+      <br><br>
 
 		</form>
-	</div>
-	<div class="col-sm-6 animated fadeIn">
+	</span>
+	<span class="col-sm-6 animated fadeIn">
 	 <!-- https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/ -->
-		<div class="">
-			<!--<div class="form-group has-success has-warning has-danger row">
+					<!--<div class="form-group has-success has-warning has-danger row">
 				<div class="col-sm-12">
 					<input  style="width:100%" type="text" id="search-input" class="form-control" placeholder="Recherchez..." />
 				</div>
@@ -119,5 +127,5 @@
 				</ul>
 			</div>
 		</div>-->
-	</div>
+	</span>
 </div>

@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.30",
     "@types/algoliasearch": "^3.18.2",
     "algoliasearch": "^3.24.3",
+    "algoliasearch-helper": "^2.21.2",
     "angularfire2": "^4.0.0-rc.1",
     "autocomplete.js": "^0.28.3",
     "chart.js": "2.6.0",

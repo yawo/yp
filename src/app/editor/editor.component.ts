@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Entry, Category, Address, Contact, ContactRole } from '../entry';
 import { Comment } from '../comment';
 import { Reaction, Rating } from '../rating';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as algoliasearch from 'algoliasearch';
+import * as algoliasearchHelper from 'algoliasearch-helper';
 import * as autocomplete from 'autocomplete.js';
 import * as instantsearch from 'instantsearch.js';
 
@@ -14,6 +16,7 @@ import * as instantsearch from 'instantsearch.js';
 })
 
 export class EditorComponent{
+  submitSuccess= false;
   categorieKeys = Object.keys(Category).splice(Object.keys(Category).length / 2);
   model: Entry;
   entries: FirebaseListObservable<any[]>;
@@ -24,6 +27,7 @@ export class EditorComponent{
   algoliaApiKey = 'a55f4befd56bcec64169b99a90e04acb';
   algoliaIndexName = 'associations';
   instantSearchHandler;
+  algoliaSearchHelper;
 
   constructor(db: AngularFireDatabase) {
     this.entries = db.list('/entries');
@@ -32,10 +36,11 @@ export class EditorComponent{
     this.algoliaClient = algoliasearch(this.algoliaAppId, this.algoliaApiKey, { protocol: 'https:'});
     this.algoliaIndex = this.algoliaClient.initIndex(this.algoliaIndexName);
     this.algoliaIndex.setSettings({attributesForFaceting: ['tags', 'categories']});
+    this.algoliaSearchHelper = algoliasearchHelper( this.algoliaClient, this.algoliaIndexName, { });
   }
 
   ngAfterViewInit() {
-    autocomplete('#search-input', { hint: false }, [{
+    /*autocomplete('#search-input', { hint: false }, [{
       source: autocomplete.sources.hits(this.algoliaIndex , { hitsPerPage: 5 }),
       displayKey: 'name',
       templates: {
@@ -45,13 +50,17 @@ export class EditorComponent{
       }
     }]).on('autocomplete:selected', function(event, suggestion, dataset) {
       console.log(suggestion, dataset);
-    });
-
+    });*/
+    const client = this.algoliaClient;
     const search = instantsearch({
       appId: this.algoliaAppId,
       apiKey: this.algoliaApiKey,
       indexName: this.algoliaIndexName,
-      urlSync: true
+      urlSync: true,
+      createAlgoliaClient: function(algoliasearch, appId, apiKey) {
+        return client;
+      }
+      // ,searchFunction: function(helper){ console.log('ddddd', helper.search()); }
     });
     search.addWidget(
       instantsearch.widgets.searchBox({
@@ -61,12 +70,14 @@ export class EditorComponent{
     );
     search.addWidget(
       instantsearch.widgets.refinementList({
+        collapsible: true,
         container: '#refinement-list',
         attributeName: 'categories'
       })
     );
     search.addWidget(
       instantsearch.widgets.hits({
+        collapsible: true,
         container: '#hits',
         templates: {
         empty: 'Aucun resultat',
@@ -106,33 +117,40 @@ export class EditorComponent{
     );
     this.instantSearchHandler = search;
     this.instantSearchHandler.start();
-
+    console.log(this.instantSearchHandler);
   }
 
-  onSubmit() {
+  onSubmit(assoForm: NgForm) {
     this.entries.push(this.model);
     this.pushToAlgolia(this.model);
-    this.research();
+    this.resetModel();
+    const is = this.instantSearchHandler;
+    setTimeout(function(){
+      is.helper.setQuery('  ');
+      is.helper.search();
+      console.log('re-searching');
+    }, 8000);
   }
 
-  resetModel(){
+  resetModel() {
     this.model = new Entry('', '', [], [], [], []) ;
     this.model.contacts = [new Contact('', '', '', ContactRole.MAINCONTACT)];
     this.model.address = new Address('');
   }
 
-  pushToAlgolia(data){
-    this.algoliaIndex.addObject(data,function(err, content) {
+  pushToAlgolia(data) {
+    this.algoliaIndex.addObject(data, function(err, content) {
       if (err) {
         console.error(err);
       }
     });
   }
 
-  research(){
-    const searchbox =  <HTMLInputElement>document.querySelector('#search-box input');
+  research() {
+
+    /* const searchbox =  <HTMLInputElement>document.querySelector('#search-box input');
     searchbox.value = '*';
     searchbox.dispatchEvent(new KeyboardEvent('input'));
-    searchbox.value = '';
+    searchbox.value = ''; */
   }
 }
