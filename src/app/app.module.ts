@@ -33,7 +33,7 @@ import { environment } from '../environments/environment';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-	  AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     NgbModule.forRoot()
