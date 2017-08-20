@@ -120,7 +120,7 @@ export class EditorComponent{
     console.log(this.instantSearchHandler);
   }
 
-  onSubmit(assoForm: NgForm) {
+  onSubmit(assoForm: any) {
     this.entries.push(this.model);
     this.pushToAlgolia(this.model);
     this.resetModel();

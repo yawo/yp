@@ -1,6 +1,6 @@
 <div class=" row">
 	<span class="assoFormContainer col-sm-6">
-		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit()">
+		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit(assoForm.value)">
 		<legend class="alert alert-info">Informations sur l'association</legend>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="name">Nom:</label>
