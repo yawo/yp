@@ -9,6 +9,11 @@ import * as algoliasearch from 'algoliasearch';
 import * as algoliasearchHelper from 'algoliasearch-helper';
 import * as autocomplete from 'autocomplete.js';
 import * as instantsearch from 'instantsearch.js';
+import 'rxjs/add/operator/count';
+import 'rxjs/add/operator/take';
+
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   templateUrl: 'editor.component.html',
@@ -28,9 +33,14 @@ export class EditorComponent{
   algoliaIndexName = 'associations';
   instantSearchHandler;
   algoliaSearchHelper;
+  recentEntries: Observable<any[]>;
+  totalEntries:  Observable<number>;
+  recentSize: 3;
 
   constructor(db: AngularFireDatabase) {
     this.entries = db.list('/entries');
+    this.totalEntries = this.entries.count();
+    this.recentEntries = this.entries.take(this.recentSize);
     this.dbRef = db;
     this.resetModel();
     this.algoliaClient = algoliasearch(this.algoliaAppId, this.algoliaApiKey, { protocol: 'https:'});
