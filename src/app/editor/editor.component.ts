@@ -20,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./editor.component.css']
 })
 
-export class EditorComponent{
+export class EditorComponent {
   submitSuccess= false;
   categorieKeys = Object.keys(Category).splice(Object.keys(Category).length / 2);
   model: Entry;
@@ -33,14 +33,18 @@ export class EditorComponent{
   algoliaIndexName = 'associations';
   instantSearchHandler;
   algoliaSearchHelper;
-  recentEntries: Observable<any[]>;
-  totalEntries:  Observable<number>;
+  recentEntries: any[];
+  totalEntries:  number;
   recentSize: 3;
 
   constructor(db: AngularFireDatabase) {
     this.entries = db.list('/entries');
-    this.totalEntries = this.entries.count();
-    this.recentEntries = this.entries.take(this.recentSize);
+    this.entries.subscribe(x => {
+      this.totalEntries = x.length;
+      this.recentEntries = x.slice(-3).reverse();
+    });
+    // this.entries.count().subscribe(x => this.totalEntries = x);
+    // this.entries.take(this.recentSize).subscribe(x => this.recentEntries = x);
     this.dbRef = db;
     this.resetModel();
     this.algoliaClient = algoliasearch(this.algoliaAppId, this.algoliaApiKey, { protocol: 'https:'});
@@ -89,10 +93,11 @@ export class EditorComponent{
       instantsearch.widgets.hits({
         collapsible: true,
         container: '#hits',
+        hitsPerPage: 10,
         templates: {
-        empty: 'Aucun resultat',
-        item: '<li><b>{{{_highlightResult.name.value}}}</b>: {{{_highlightResult.description}}} </li>'
-      }
+          empty: 'Aucun resultat',
+          item: '<li><b>{{{_highlightResult.name.value}}}</b>: {{{_highlightResult.description}}} </li>'
+        }
       })
     );
      // initialize currentRefinedValues
@@ -157,7 +162,6 @@ export class EditorComponent{
   }
 
   research() {
-
     /* const searchbox =  <HTMLInputElement>document.querySelector('#search-box input');
     searchbox.value = '*';
     searchbox.dispatchEvent(new KeyboardEvent('input'));

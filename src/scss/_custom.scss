@@ -71,3 +71,29 @@ body{
  #hits{
    margin: 10px 1px 10px 1px;
  }
+
+ .afronuairemain{
+  padding-top: 5px;
+ }
+ .afronuaireheader{
+  background-color: #ffe007 !important;
+  .navbar-brand{
+    width:70px !important;
+  }
+  .brandtext{
+    margin-left: 100px;
+    
+    font-family: 'Roboto Light';
+    small{
+      margin-left: 25px;
+      font-size: .7em;
+      font-style: italic;
+      font-variant: small-caps;
+    }
+  }
+ }
+ 
+ .stats{
+    border-radius: 3px;
+    background-color:#e7e7e7 ;
+ }

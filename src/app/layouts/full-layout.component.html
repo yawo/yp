@@ -1,4 +1,4 @@
-<header class="app-header navbar">
+<header class="app-header navbar" [hidden]=true>
   <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>
   <a class="navbar-brand" href="#"></a>
   <ul class="nav navbar-nav mr-auto d-md-down-none">
@@ -7,24 +7,27 @@
     </li>
   </ul>
 </header>
-
+<header class="app-header navbar afronuaireheader">
+    <a class="navbar-brand" href="#">    <span class="brandtext">AFRO NUAIRE<small>l'annuaire des associations et groupes afros.</small> </span>
+    </a>>
+</header>  
 <div class="app-body">
-  <div class="sidebar">
+  <div class="sidebar" [hidden]=true>
     <nav class="sidebar-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/editor']"><i class="icon-speedometer"></i> Editor <span class="badge badge-info">NEW</span></a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/editor']"><i class="icon-speedometer"></i> Annuaire <span class="badge badge-info"></span></a>
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
         </li>
       </ul>
     </nav>
-  </div>
+  </div> 
 
   <!-- Main content -->
   <main class="main">
 
     <!-- Breadcrumb -->
-    <ol class="breadcrumb">
+    <ol class="breadcrumb" [hidden]=true>
       <app-breadcrumbs></app-breadcrumbs>
     </ol>
 
@@ -35,6 +38,6 @@
 </div>
 
 <footer class="app-footer">
-  <a href="http://coreui.io">CoreUI</a> &copy; 2017 creativeLabs.
-  <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
+  <a href="#">AfroApps</a> &copy; 2017 AfroApps.
+  <span class="float-right">Powered by <a href="#">Afroapps</a></span>
 </footer>

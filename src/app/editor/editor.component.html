@@ -1,7 +1,37 @@
-<div class=" row">
-	<span class="assoFormContainer col-sm-6">
+<div class=" row afronuairemain">
+	<span class="col-sm-8 animated fadeIn">
+	 <!-- https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/ -->
+					<!--<div class="form-group has-success has-warning has-danger row">
+				<div class="col-sm-12">
+					<input  style="width:100%" type="text" id="search-input" class="form-control" placeholder="Recherchez..." />
+				</div>
+      </div>-->
+      <div id="search-box" #searchbox>
+        <!-- SearchBox widget will appear here -->
+      </div>
+      <div class="search-bottom-box row container">
+        <span class="col-sm-3" id="refinement-list">
+          <!-- RefinementList widget will appear here -->
+        </span>
+        <span class="col-sm-3" id="clear-all">
+          <!-- ClearAll widget will appear here -->
+        </span>
+        <span class="col-sm-3 current-refined-values-box"  >
+          <span class="badge badge-warning">filtres actuels:</span><span id="current-refined-values"></span><!-- CurrentRefinedValues widget will appear here -->
+        </span>
+      </div>
+      <div>
+        <ul id="hits">
+        </ul>
+        <!-- Hits widget will appear here -->
+      </div>
+      <div id="pagination">
+        <!-- Pagination widget will appear here -->
+      </div>
+	</span>
+	<span class="assoFormContainer col-sm-4">
 		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit(assoForm.value)">
-		<legend class="alert alert-info">Informations sur l'association</legend>
+		<legend class="alert alert-warning">Rajouter une entrée</legend>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="name">Nom:</label>
 				<div class="col-sm-10">
@@ -47,7 +77,7 @@
 						[(ngModel)]="model.address.full" name="address" required>
 				</div>
 			</div>
-	  <legend class="alert alert-info">Contact principal:</legend>
+	  <legend class="alert alert-warning">Contact principal:</legend>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="contactname">Nom:</label>
 				<div class="col-sm-10">
@@ -69,18 +99,10 @@
 						[(ngModel)]="model.contacts[0].phone"  pattern="^\d{10}$" name="contactphone" required>
 				</div>
 			</div>
-			<!-- <div class="form-group has-success has-warning has-danger row">
-				<label class="col-sm-2 col-form-label" for="contactrole">role</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="contactrole" placeholder=""
-						[(ngModel)]="model.contacts[0].email" name="contactrole" required>
-				</div>
-			</div>
-			 -->
+	
+      <button type="submit" class="btn btn-warning">Ajouter</button>
 
-      <button type="submit" class="btn btn-success">Ajouter</button>
-
-      <span [ngClass]="{'alert alert-success alert-dismissible fade show float-sm-right':submitSuccess,'hidden': !submitSuccess}" role="alert">
+      <span [hidden]="!submitSuccess"  [ngClass]="{'alert alert-success alert-dismissible fade show float-sm-right':submitSuccess,'hidden': !submitSuccess}" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -90,42 +112,14 @@
       <br><br>
 
 		</form>
-	</span>
-	<span class="col-sm-6 animated fadeIn">
-	 <!-- https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/ -->
-					<!--<div class="form-group has-success has-warning has-danger row">
-				<div class="col-sm-12">
-					<input  style="width:100%" type="text" id="search-input" class="form-control" placeholder="Recherchez..." />
-				</div>
-      </div>-->
-      <div id="search-box" #searchbox>
-        <!-- SearchBox widget will appear here -->
-      </div>
-      <div class="search-bottom-box row container">
-        <span class="col-sm-3" id="refinement-list">
-          <!-- RefinementList widget will appear here -->
-        </span>
-        <span class="col-sm-3" id="clear-all">
-          <!-- ClearAll widget will appear here -->
-        </span>
-        <span class="col-sm-3 current-refined-values-box"  >
-          <span class="badge badge-info">filtres actuels:</span><span id="current-refined-values"></span><!-- CurrentRefinedValues widget will appear here -->
-        </span>
-      </div>
-      <div>
-        <ul id="hits">
-        </ul>
-        <!-- Hits widget will appear here -->
-      </div>
-      <div id="pagination">
-        <!-- Pagination widget will appear here -->
-      </div>
-			<!--<div class="container">
-				<ul>
-					<li class="text" *ngFor="let entry of entries | async">
-						{{entry.name}}</li>
-				</ul>
-			</div>
-		</div>-->
-	</span>
+		<div class="container stats">
+			<span class="badge badge-warning">Derniers ajouts</span>
+			<ul>
+				<li class="text" *ngFor="let entry of recentEntries">
+					{{entry.name}}</li>
+			</ul>
+			<span> <span class="badge badge-warning">{{totalEntries}}</span> <small>entrées dans l'annuaire.</small></span>
+		</div>
+	
+	</span> 
 </div>
