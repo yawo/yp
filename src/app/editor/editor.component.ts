@@ -50,7 +50,7 @@ export class EditorComponent {
     this.algoliaClient = algoliasearch(this.algoliaAppId, this.algoliaApiKey, { protocol: 'https:'});
     this.algoliaIndex = this.algoliaClient.initIndex(this.algoliaIndexName);
     this.algoliaIndex.setSettings({attributesForFaceting: ['tags', 'categories']});
-    this.algoliaSearchHelper = algoliasearchHelper( this.algoliaClient, this.algoliaIndexName, { });
+    this.algoliaSearchHelper = algoliasearchHelper( this.algoliaClient, this.algoliaIndexName, { hitsPerPage: 10 });
   }
 
   ngAfterViewInit() {
@@ -93,10 +93,16 @@ export class EditorComponent {
       instantsearch.widgets.hits({
         collapsible: true,
         container: '#hits',
-        hitsPerPage: 10,
         templates: {
           empty: 'Aucun resultat',
-          item: '<li><b>{{{_highlightResult.name.value}}}</b>: {{{_highlightResult.description}}} </li>'
+          item: `
+          <li class='hit-entry row'>
+            <span class='hitcategories badge badge-warning'>{{{categories}}}</span>
+            <span class='col-sm-6 hitname'>{{{name}}} </span>
+            <span class='col-sm-3 hitaddress'> {{{address.full}}} </span>
+            <span class='hitphone'> | {{{contacts.0.phone}}}, {{{contacts.0.email}}} </span>
+            <span class='col-sm-12 hitdesc'>{{{description}}}</span>
+          </li>`
         }
       })
     );

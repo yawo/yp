@@ -53,6 +53,9 @@ body{
 
 .ais-current-refined-values--item, .ais-refinement-list--item {
   font-size:10px !important;
+  display: inline-table;
+  // margin-left: 10px;
+  width: 130px;
 }
 .search-bottom-box{
   background-color: #fff;
@@ -69,7 +72,11 @@ body{
 }
 
  #hits{
-   margin: 10px 1px 10px 1px;
+   //margin: 10px 1px 10px 1px;
+   list-style: none;
+   display: inline-table;
+   width: 100%;
+   padding: 0;
  }
 
  .afronuairemain{
@@ -95,5 +102,37 @@ body{
  
  .stats{
     border-radius: 3px;
-    background-color:#e7e7e7 ;
+    background-color:rgba(231, 231, 231, 0.49) ;
+ }
+
+ .hit-entry{
+   border-radius: 3px;
+   background-color: white;
+   margin:2px;
+   padding: 2px;
+ }
+
+ .hitname{
+  font-variant: small-caps;
+  font-family: 'Roboto Light';
+ }
+
+ .hitaddress{
+   font-style: italic;
+ }
+
+ .hitphone{
+  font-size: 0.8em;
+  color: #008eff;
+ }
+
+ .hitcategories{
+   font-size: 9px;
+   width: 8em;
+ }
+
+ .hitdesc{
+  background-color: rgba(243, 241, 236, 0.4);
+  font-family: 'Lato';
+  font-size: 0.9em;
  }
