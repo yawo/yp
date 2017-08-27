@@ -8,12 +8,12 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import * as algoliasearch from 'algoliasearch';
 import * as algoliasearchHelper from 'algoliasearch-helper';
 import * as autocomplete from 'autocomplete.js';
-import * as instantsearch from 'instantsearch.js';
 import 'rxjs/add/operator/count';
 import 'rxjs/add/operator/take';
-
+import * as  places from 'places.js';
 import { Observable } from 'rxjs/Observable';
 
+import * as instantsearch from 'instantsearch.js';
 
 @Component({
   templateUrl: 'editor.component.html',
@@ -53,6 +53,7 @@ export class EditorComponent {
     this.algoliaSearchHelper = algoliasearchHelper( this.algoliaClient, this.algoliaIndexName, { hitsPerPage: 10 });
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     /*autocomplete('#search-input', { hint: false }, [{
       source: autocomplete.sources.hits(this.algoliaIndex , { hitsPerPage: 5 }),
@@ -65,6 +66,10 @@ export class EditorComponent {
     }]).on('autocomplete:selected', function(event, suggestion, dataset) {
       console.log(suggestion, dataset);
     });*/
+    const placesAutocomplete = places({
+      container: document.querySelector('#address')
+    });
+
     const client = this.algoliaClient;
     const search = instantsearch({
       appId: this.algoliaAppId,
