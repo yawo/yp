@@ -1,5 +1,5 @@
 <div class=" row afronuairemain">
-	<span class="col-sm-7 animated fadeIn">
+    <span class="col-sm-7 animated fadeIn">
 	 <!-- https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/ -->
 					<!--<div class="form-group has-success has-warning has-danger row">
 				<div class="col-sm-12">
@@ -13,22 +13,23 @@
         <span class="col-sm-4" id="refinement-list">
           <!-- RefinementList widget will appear here -->
         </span>
-        <span class="col-sm-2" id="clear-all">
+    <span class="col-sm-2" id="clear-all">
           <!-- ClearAll widget will appear here -->
         </span>
-        <span class="col-sm-3 current-refined-values-box"  >
-          <span class="badge badge-warning">filtres actuels:</span><span id="current-refined-values"></span><!-- CurrentRefinedValues widget will appear here -->
-        </span>
-      </div>
-      
-        <ul id="hits">
-        </ul>
-        <!-- Hits widget will appear here -->
-      <div id="pagination">
-        <!-- Pagination widget will appear here -->
-      </div>
-	</span>
-	<span class="assoFormContainer col-sm-5">
+    <span class="col-sm-3 current-refined-values-box">
+          <span class="badge badge-warning">filtres actuels:</span><span id="current-refined-values"></span>
+    <!-- CurrentRefinedValues widget will appear here -->
+    </span>
+</div>
+
+<ul id="hits">
+</ul>
+<!-- Hits widget will appear here -->
+<div id="pagination">
+    <!-- Pagination widget will appear here -->
+</div>
+</span>
+<span class="assoFormContainer col-sm-5">
 		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit(assoForm.value)">
 		<legend class="alert alert-warning">Rajouter une entrée</legend>
 			<div class="form-group has-success has-warning has-danger row">
@@ -102,23 +103,23 @@
       <button type="submit" class="btn btn-warning">Ajouter</button>
 
       <span [hidden]="!submitSuccess"  [ngClass]="{'alert alert-success alert-dismissible fade show float-sm-right':submitSuccess,'hidden': !submitSuccess}" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" [disabled]="!assoForm.form.valid" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
-        <small><strong>Bien rajouté!</strong> Merci</small>
-      </span>
+</button>
+<small><strong>Bien rajouté!</strong> Merci</small>
+</span>
 
-      <br><br>
+<br><br>
 
-		</form>
-		<div class="container stats">
-			<span class="badge badge-warning">Derniers ajouts</span>
-			<ul>
-				<li class="text" *ngFor="let entry of recentEntries">
-					{{entry.name}}</li>
-			</ul>
-			<span> <span class="badge badge-warning">{{totalEntries}}</span> <small>entrées dans l'annuaire.</small></span>
-		</div>
-	
-	</span> 
+</form>
+<div class="container stats">
+    <span class="badge badge-warning">Derniers ajouts</span>
+    <ul>
+        <li class="text" *ngFor="let entry of recentEntries">
+            {{entry.name}}</li>
+    </ul>
+    <span> <span class="badge badge-warning">{{totalEntries}}</span> <small>entrées dans l'annuaire.</small></span>
+</div>
+
+</span>
 </div>
