@@ -1,39 +1,46 @@
 // Here you can add other styles
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Lato|Roboto');
 // import url('/assets/bootstrap.min.css');
-
 @import url('https://cdn.jsdelivr.net/npm/instantsearch.js@2.0.2/dist/instantsearch.min.css');
 @import url('https://cdn.jsdelivr.net/npm/instantsearch.js@2.0.2/dist/instantsearch-theme-algolia.min.css');
-
-body{
-	font-family: 'Roboto','Open Sans', sans-serif;
+body {
+    font-family: 'Roboto', 'Open Sans', sans-serif;
 }
-.navbar.navbar-inverse.navbar-fixed-top{
-	background-color: #2b92ec;
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: #2b92ec;
 }
 
 #assoForm {
-  label {
-	background-color:rgba(251, 251, 251, 0.23);
-	border-radius: 5px;
-	font-weight: 800;
-	color: #3f545a;
-	}
-
-  legend{
-	//color:#0a3342;
-	font-weight: 700;
-	font-size:1rem;
-  }
+    font-size: 0.9em;
+    input,
+    select {
+        font-size: 0.9em;
+    }
+    label {
+        background-color: rgba(251, 251, 251, 0.23);
+        border-radius: 5px;
+        font-weight: 800;
+        color: #3f545a;
+    }
+    legend {
+        //color:#0a3342;
+        font-weight: 700;
+        font-size: 0.8rem;
+    }
 }
 
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948;
+    /* green */
 }
 
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
 }
+
 .current-refinements .clear-refinements {
     color: #697782;
     cursor: pointer;
@@ -42,7 +49,9 @@ body{
     padding: 1px 0 0 8px;
     transition: .2s background-color ease-in;
 }
-.current-refinements .refinement, .current-refinements .clear-refinements {
+
+.current-refinements .refinement,
+.current-refinements .clear-refinements {
     color: white;
     //background-color: #8090b2;
     padding: 2px 0px 3px 8px;
@@ -51,88 +60,99 @@ body{
     margin-right: 8px;
 }
 
-.ais-current-refined-values--item, .ais-refinement-list--item {
-  font-size:10px !important;
-  display: inline-table;
-  // margin-left: 10px;
-  width: 130px;
-}
-.search-bottom-box{
-  background-color: #fff;
-  padding: 10px;
-  margin: auto;
-  border-radius: 3px;
-}
-.ais-search-box{
-  max-width: 100%;
+.ais-current-refined-values--item,
+.ais-refinement-list--item {
+    font-size: 10px !important;
+    display: inline-table;
+    // margin-left: 10px;
+    width: 130px;
 }
 
-.current-refined-values-box{
-  border-left: 1px solid rgba(238, 238, 238, 0.72);
-}
-
- #hits{
-   //margin: 10px 1px 10px 1px;
-   list-style: none;
-   display: inline-table;
-   width: 100%;
-   padding: 0;
- }
-
- .afronuairemain{
-  padding-top: 5px;
- }
- .afronuaireheader{
-  background-color: #ffe007 !important;
-  .navbar-brand{
-    width:70px !important;
-  }
-  .brandtext{
-    margin-left: 2.5em;
-    
-    font-family: 'Roboto Light';
-    small{
-      margin-left: 25px;
-      font-size: .7em;
-      font-style: italic;
-      font-variant: small-caps;
-    }
-  }
- }
- 
- .stats{
+.search-bottom-box {
+    background-color: #fff;
+    padding: 10px;
+    margin: auto;
     border-radius: 3px;
-    background-color:rgba(231, 231, 231, 0.49) ;
- }
+}
 
- .hit-entry{
-   border-radius: 3px;
-   background-color: white;
-   margin:2px;
-   padding: 2px;
- }
+.ais-search-box {
+    max-width: 100%;
+}
 
- .hitname{
-  font-variant: small-caps;
-  font-family: 'Roboto Light';
- }
+.current-refined-values-box {
+    border-left: 1px solid rgba(238, 238, 238, 0.72);
+}
 
- .hitaddress{
-   font-style: italic;
- }
+#hits {
+    //margin: 10px 1px 10px 1px;
+    list-style: none;
+    display: inline-table;
+    width: 100%;
+    padding: 0;
+}
 
- .hitphone{
-  font-size: 0.8em;
-  color: #008eff;
- }
+.afronuairemain {
+    padding-top: 5px;
+}
 
- .hitcategories{
-   font-size: 9px;
-   width: 8em;
- }
+.afronuaireheader {
+    background-color: #ffe007 !important;
+    .navbar-brand {
+        width: 70px !important;
+    }
+    .brandtext {
+        margin-left: 2.5em;
+        font-family: 'Roboto Light';
+        small {
+            margin-left: 25px;
+            font-size: .7em;
+            font-style: italic;
+            font-variant: small-caps;
+        }
+    }
+}
 
- .hitdesc{
-  background-color: rgba(243, 241, 236, 0.4);
-  font-family: 'Lato';
-  font-size: 0.9em;
- }
+.stats {
+    border-radius: 3px;
+    background-color: rgba(231, 231, 231, 0.49);
+}
+
+.hit-entry {
+    border-radius: 3px;
+    background-color: white;
+    margin: 2px;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+.hitname {
+    font-variant: small-caps;
+    font-family: 'Roboto Light';
+}
+
+.hitaddress {
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.hitphone {
+    font-size: 0.8em;
+    color: #008eff;
+}
+
+.hitcategories {
+    font-size: 9px;
+    width: 8em;
+}
+
+.hitdesc {
+    background-color: rgba(243, 241, 236, 0.4);
+    font-family: 'Lato';
+    font-size: 0.9em;
+    padding-top: 0.3em;
+}
+
+.hittags {
+    color: #ff8300;
+    font-size: 0.8em;
+}

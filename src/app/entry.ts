@@ -1,5 +1,5 @@
 export class Entry {
-  constructor(   
+  constructor(
    public name: string,
    public description: string,
    public categories: Category[],
@@ -34,7 +34,7 @@ export class Address {
 }
 
 export enum Category {
-  ASSOCIATION, RESTAURATION, MODE, ENTREPRISE
+  ASSOCIATION, RESTAURATION, MODE, ENTREPRISE, ORGANISATION, GROUPE, AUTRE
 }
 
 export enum ContactRole {
