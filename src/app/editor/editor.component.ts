@@ -103,7 +103,7 @@ export class EditorComponent {
           item: `
           <li class='hit-entry row'>
             <span class='hitcategories badge badge-warning'>{{{categories}}}</span>
-            <span class='col-sm-6 hitname'>{{{name}}} </span>
+            <span class='col-sm-5 hitname'>{{{name}}} </span>
             <span class='col-sm-3 hitaddress'> {{{address.full}}} </span>
             <span class='hitphone'> | {{{contacts.0.phone}}}, {{{contacts.0.email}}} </span>
             <span class='col-sm-12 hitdesc'>{{{description}}}</span>
