@@ -1,14 +1,16 @@
 <div class=" row afronuairemain">
-    <span class="col-sm-8 animated fadeIn">
+
+    <span class="col-sm-12 animated fadeIn">
 	 <!-- https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/ -->
 					<!--<div class="form-group has-success has-warning has-danger row">
 				<div class="col-sm-12">
 					<input  style="width:100%" type="text" id="search-input" class="form-control" placeholder="Recherchez..." />
 				</div>
       </div>-->
-      <div id="search-box" #searchbox>
+      <span id="search-box" #searchbox>
         <!-- SearchBox widget will appear here -->
-      </div>
+      </span>
+      <a id="addButton" href="#form-anchor"><img src="/assets/img/add.png"/></a>
       <div class="search-bottom-box row ">
         <span class="col-sm-4" id="refinement-list">
           <!-- RefinementList widget will appear here -->
@@ -17,7 +19,7 @@
           <!-- ClearAll widget will appear here -->
         </span>
     <span class="col-sm-3 current-refined-values-box">
-          <span class="badge badge-warning">filtres actuels:</span><span id="current-refined-values"></span>
+          <span class="badge badge-default">filtres actuels:</span><span id="current-refined-values"></span>
     <!-- CurrentRefinedValues widget will appear here -->
     </span>
 </div>
@@ -29,7 +31,8 @@
     <!-- Pagination widget will appear here -->
 </div>
 </span>
-<span class="assoFormContainer col-sm-4">
+<span class="assoFormContainer col-sm-12">
+		<a name="form-anchor"></a>
 		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit(assoForm.value)">
 		<legend class="alert alert-warning">Rajouter une entrée</legend>
 			<div class="form-group has-success has-warning has-danger row">
