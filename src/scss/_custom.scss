@@ -244,7 +244,9 @@ body {
         }
     }
 }
-
+.main .container-fluid {
+    padding: 0 3px;
+}
 .stats {
     border-radius: 3px;
     background-color: rgba(231, 231, 231, 0.49);
