@@ -106,7 +106,7 @@ export class EditorComponent {
             <span class=' hitcategories badge badge-default'>{{{categories.0}}}</span>
             <span class='col-sm-5 hitname'>{{{name}}} </span>
             <span class='col-sm-3 hitaddress'> {{{address.full}}} </span>
-            <span class='hitphone'> | {{{contacts.0.phone}}}, {{{contacts.0.email}}} </span>
+            <span class='hitphone'> | {{{contacts.0.phone}}} {{{contacts.0.email}}} </span>
             <span class='col-sm-12 hitdesc'>{{{description}}}</span>
             <span class='col-sm-12 hittags'>{{{tags}}}</span>
           </li>`
