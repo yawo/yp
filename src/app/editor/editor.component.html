@@ -70,38 +70,38 @@
 <span class="assoFormContainer col-sm-12">
 		<a name="form-anchor"></a>
 		<form id="assoForm" class="form form-horizontal" #assoForm="ngForm" (ngSubmit)="onSubmit(assoForm.value)">
-		<legend class="alert alert-warning">Rajouter une entrée</legend>
+		<legend class="alert alert-info">Rajouter une entrée</legend>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="name">Nom:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="text" class="form-control" id="name" placeholder="saisissez le nom légal de l'association"
 						[(ngModel)]="model.name" name="name" required>
 				</div>
 			</div>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="description">Description:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<textarea type="text" class="form-control" id="description" placeholder="descrivez son activité"
 						[(ngModel)]="model.description" name="description" required></textarea>
 				</div>
 			</div>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="activiyZone">Zone d'action:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="text" class="form-control" id="activiyZone" placeholder="précisez où agit l'association. ex: Sénégal, Paris, Maroc..."
 						[(ngModel)]="model.activiyZone" name="activiyZone" required>
 				</div>
 			</div>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="tags">Mots-clés:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="text" class="form-control" id="tags" placeholder="ajoutez des mots-clés, site web, facebook... Veuillez séparer avec des virgules"
 						[(ngModel)]="model.tags" name="tags" required>
 				</div>
 			</div>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="categories">Domaines d'action:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<select multiple class="form-control" id="categories" required placeholder="sélectionner les domaines"
 						[(ngModel)]="model.categories" name="categories">
 						<option *ngFor="let c of categorieKeys" [value]="c">{{c}}</option>
@@ -111,35 +111,35 @@
 
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="address">Adresse:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="search"  class="form-control" id="address" placeholder="saisissez l'adresse complète"
 						[(ngModel)]="model.address.full" name="address" required>
 				</div>
 			</div>
-	  <legend class="alert alert-warning">Contact principal:</legend>
+	  <legend class="alert alert-info">Contact principal:</legend>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="contactname">Nom:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="text" class="form-control" id="contactname" placeholder="Nom du principal contact"
 						[(ngModel)]="model.contacts[0].name" name="contactname" required>
 				</div>
 			</div>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="contactemail">Email:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="email" class="form-control" id="contactemail" placeholder="Email du principal contact"
 						[(ngModel)]="model.contacts[0].email" email name="contactemail" required>
 				</div>
 			</div>
 			<div class="form-group has-success has-warning has-danger row">
 				<label class="col-sm-2 col-form-label" for="contactphone">Téléphone:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 					<input type="text" class="form-control" id="contactphone" placeholder="Téléphone du principal contact"
 						[(ngModel)]="model.contacts[0].phone"  pattern="^\d{10}$" name="contactphone" required>
 				</div>
 			</div>
 
-      <button type="submit" [disabled]="!assoForm.form.valid" class="btn btn-warning">Ajouter</button>
+      <button type="submit" [disabled]="!assoForm.form.valid" class="btn btn-info">Ajouter</button>
 
       <span [hidden]="!submitSuccess"  [ngClass]="{'alert alert-success alert-dismissible fade show float-sm-right':submitSuccess,'hidden': !submitSuccess}" role="alert">
         <button type="button"  class="close" data-dismiss="alert" aria-label="Close">
@@ -152,7 +152,7 @@
 
 </form>
 <div class="container stats">
-    <span class="badge badge-warning">Derniers ajouts</span>
+    <span class="badge badge-info">Derniers ajouts</span>
     <ul>
         <li class="text" *ngFor="let entry of recentEntries">
             {{entry.name}}</li>

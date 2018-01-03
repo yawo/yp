@@ -142,10 +142,11 @@ body {
 }
 
 #assoForm {
-    font-size: 0.9em;
+    padding-left:10px;
+    font-size: 1em;
     input,
     select {
-        font-size: 0.9em;
+        font-size: 1em;
     }
     label {
         background-color: rgba(251, 251, 251, 0.23);
@@ -279,7 +280,7 @@ body {
 
 .hitphone {
     font-size: 0.95em;
-    color: #6f4602;
+    color: #253e44;
 }
 
 .hitcategories {
@@ -296,7 +297,7 @@ body {
 }
 
 .hittags {
-    color: #4f230c;
+    color: #253e44;
     font-size: 0.95em;
 }
 
