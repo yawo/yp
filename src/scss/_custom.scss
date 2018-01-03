@@ -138,6 +138,7 @@ body {
 
 .navbar.navbar-inverse.navbar-fixed-top {
     background-color: #2b92ec;
+    color:white;
 }
 
 #assoForm {
@@ -201,7 +202,9 @@ body {
     background-color: #e4e5e6;
     padding: 10px;
     margin: auto;
+    margin-top:2px;
     border-radius: 3px;
+    border: 3px solid #006c84;
 }
 
 .ais-search-box {
@@ -229,9 +232,11 @@ body {
 }
 
 .afronuaireheader {
-    background-color: #ffe007 !important;
+    display: none; 
+    background-color: #006c84 !important;
     .navbar-brand {
         width: 70px !important;
+        color: #fff;
     }
     .brandtext {
         margin-left: 2.5em;
@@ -258,6 +263,7 @@ body {
     margin: 2px;
     padding: 2px;
     font-size: 1em;
+    margin-top:1.5em;
 }
 
 .hitname {
@@ -300,9 +306,9 @@ body {
 }
 
 .ais-current-refined-values--count, .ais-hierarchical-menu--count, .ais-menu--count, .ais-refinement-list--count, .ais-star-rating--count, .ais-toggle--count {
-    background: rgb(255, 224, 3);
+    background:#006c84;
     border-radius: 31px;
-    color: #020200;
+    color: #fff;
     padding: 2px 10px;
 }
 .ais-clear-all--link, .ais-current-refined-values--clear-all, .ais-price-ranges--button {
@@ -313,4 +319,37 @@ body {
     font-size: 12px;
     text-decoration: none;
     padding: 4px 8px;
+}
+
+#addButton{
+    font-weight: bold;
+    font-family: 'Roboto';
+    color: #125d69;
+}
+
+.afrocarousel{
+    //width: 900px;
+    height: 100%;
+    min-height: 100%;
+    margin: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.afrocarouselcontainer{
+    background-color:#006c84; // #6eb5c0;
+    height: 67em;
+}
+
+.afroenter{
+    //background-color:#006c84; // #6eb5c0;
+    height: 1em;
+    //width: 200px;
+    margin:auto;
+}
+
+.carousel-caption.d-none.d-md-block p{
+
+    font-variant: small-caps;
+    color: #afc4c7;
 }

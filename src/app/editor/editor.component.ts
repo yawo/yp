@@ -84,6 +84,7 @@ export class EditorComponent {
     search.addWidget(
       instantsearch.widgets.searchBox({
         container: '#search-box',
+        autofocus: false,
         placeholder: 'Rechercher une association (par nom, description, catégories ou mots clés)'
       })
     );
